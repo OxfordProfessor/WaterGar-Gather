@@ -1,0 +1,17 @@
+底层完全配置完成，只需要修改部分端口与远程服务器端口
+*HANDWARE/CAMERA树莓派通信串口
+*HANDWARE/LCD触摸屏通信串口
+  |24CXX
+  |W25QXX
+  均为LCD显示屏上的触摸芯片，不必做修改
+  |Touch
+  为触摸协议,不必做修改
+*HANDWARE/GUI显示屏的显示页面
+*HANDWARE/FLASH外部Flash端口
+  |SPI
+  为芯片与FLASH的通信协议,不必做修改
+*HANDWARE/PWM六个电机连接端口
+*HANDWARE/SERSOR TDS传感器，PH传感器，超声波传感器连接端口
+*FAFTS/sdio_sdcard.c SD卡连接串口
+*NET/Esp8266 wifi账号密码，通信串口，服务器端口与地址
+*NET/protocol 服务器加密的三元组

@@ -39,6 +39,7 @@
 ..\obj\usart.o: D:\MDK5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\obj\usart.o: D:\MDK5\ARM\ARMCC\Bin\..\include\stdarg.h
 ..\obj\usart.o: D:\MDK5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\obj\usart.o: ..\HARDWARE\CAMERA\camera.h
 ..\obj\usart.o: ..\FreeRTOS\include\FreeRTOS.h
 ..\obj\usart.o: D:\MDK5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\obj\usart.o: ..\FreeRTOS\include\FreeRTOSConfig.h

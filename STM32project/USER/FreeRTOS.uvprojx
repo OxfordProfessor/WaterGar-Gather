@@ -335,7 +335,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_PRESENT = 1,__FPU_USED=1,ARM_MATH_CM4,__CC_ARM</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\USER;..\HARDWARE\IIC;..\HARDWARE\LCD;..\HARDWARE\LED;..\HARDWARE\SRAM;..\HARDWARE\TIMER;..\HARDWARE\24CXX;..\HARDWARE\TOUCH;..\MALLOC;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\FWLIB\CMSIS\Include;..\EMWIN\STemWin\Config;..\EMWIN\STemWin\inc;..\EMWIN\Demo;..\HARDWARE\GUI;..\HARDWARE\DS18B20;..\NET\cJSON;..\NET\ESP8266;..\NET\Protocol;..\NET\Serve;..\NET;..\HARDWARE\BEEP</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\USER;..\HARDWARE\IIC;..\HARDWARE\LCD;..\HARDWARE\LED;..\HARDWARE\SRAM;..\HARDWARE\TIMER;..\HARDWARE\24CXX;..\HARDWARE\TOUCH;..\MALLOC;..\FreeRTOS\include;..\FreeRTOS\portable\RVDS\ARM_CM4F;..\FWLIB\CMSIS\Include;..\EMWIN\STemWin\Config;..\EMWIN\STemWin\inc;..\EMWIN\Demo;..\HARDWARE\GUI;..\HARDWARE\DS18B20;..\NET\cJSON;..\NET\ESP8266;..\NET\Protocol;..\NET\Serve;..\NET;..\HARDWARE\BEEP;..\HARDWARE\SENSOR;..\HARDWARE\PWM;..\FAFTS\sd;..\FAFTS\src\option;..\FAFTS\exfuns;..\FAFTS\src;..\HARDWARE\SPI;..\HARDWARE\STMFLASH;..\HARDWARE\W25QXX;..\HARDWARE\CAMERA</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -400,24 +400,9 @@
           <GroupName>HARDWARE</GroupName>
           <Files>
             <File>
-              <FileName>led.c</FileName>
+              <FileName>ds18b20.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LED\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>ILI93xx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LCD\ILI93xx.c</FilePath>
-            </File>
-            <File>
-              <FileName>sram.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\SRAM\sram.c</FilePath>
-            </File>
-            <File>
-              <FileName>24cxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
+              <FilePath>..\HARDWARE\DS18B20\ds18b20.c</FilePath>
             </File>
             <File>
               <FileName>myiic.c</FileName>
@@ -425,19 +410,69 @@
               <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
             </File>
             <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LED\led.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\PWM\pwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>sensor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SENSOR\sensor.c</FilePath>
+            </File>
+            <File>
+              <FileName>camera.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\CAMERA\camera.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SPI\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stmflash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\STMFLASH\stmflash.c</FilePath>
+            </File>
+            <File>
+              <FileName>sram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SRAM\sram.c</FilePath>
+            </File>
+            <File>
+              <FileName>w25qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\W25QXX\w25qxx.c</FilePath>
+            </File>
+            <File>
               <FileName>ctiic.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\TOUCH\ctiic.c</FilePath>
             </File>
             <File>
+              <FileName>24cxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
+            </File>
+            <File>
               <FileName>ott2001a.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\TOUCH\ott2001a.c</FilePath>
-            </File>
-            <File>
-              <FileName>touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\touch.c</FilePath>
             </File>
             <File>
               <FileName>gt9147.c</FileName>
@@ -450,9 +485,14 @@
               <FilePath>..\HARDWARE\TOUCH\ft5206.c</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
+              <FileName>touch.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+              <FilePath>..\HARDWARE\TOUCH\touch.c</FilePath>
+            </File>
+            <File>
+              <FileName>ILI93xx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\LCD\ILI93xx.c</FilePath>
             </File>
             <File>
               <FileName>gui.c</FileName>
@@ -460,14 +500,9 @@
               <FilePath>..\HARDWARE\GUI\gui.c</FilePath>
             </File>
             <File>
-              <FileName>ds18b20.c</FileName>
+              <FileName>text.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\DS18B20\ds18b20.c</FilePath>
-            </File>
-            <File>
-              <FileName>beep.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
+              <FilePath>..\HARDWARE\text.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -493,6 +528,26 @@
               <FileName>serve.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\NET\Serve\serve.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>SYSTEM</GroupName>
+          <Files>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\sys\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -554,25 +609,30 @@
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_usart.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>SYSTEM</GroupName>
-          <Files>
             <File>
-              <FileName>delay.c</FileName>
+              <FileName>stm32f4xx_adc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SYSTEM\delay\delay.c</FilePath>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.c</FilePath>
             </File>
             <File>
-              <FileName>sys.c</FileName>
+              <FileName>stm32f4xx_dma.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SYSTEM\sys\sys.c</FilePath>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.c</FilePath>
             </File>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>stm32f4xx_spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_flash.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -688,6 +748,36 @@
               <FileName>STemWin_CM4_OS_wc16_ARGB.a</FileName>
               <FileType>4</FileType>
               <FilePath>..\EMWIN\STemWin\Lib\STemWin_CM4_OS_wc16_ARGB.a</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>FAFTS</GroupName>
+          <Files>
+            <File>
+              <FileName>exfuns.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FAFTS\exfuns\exfuns.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdio_sdcard.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FAFTS\sd\sdio_sdcard.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FAFTS\src\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>diskio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FAFTS\src\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc936.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FAFTS\src\option\cc936.c</FilePath>
             </File>
           </Files>
         </Group>

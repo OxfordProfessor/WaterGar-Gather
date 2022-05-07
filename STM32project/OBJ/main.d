@@ -94,3 +94,10 @@
 ..\obj\main.o: ..\NET\Protocol\protocol.h
 ..\obj\main.o: ..\NET\common.h
 ..\obj\main.o: ..\HARDWARE\BEEP\beep.h
+..\obj\main.o: ..\HARDWARE\PWM\pwm.h
+..\obj\main.o: ..\HARDWARE\SENSOR\sensor.h
+..\obj\main.o: ..\HARDWARE\CAMERA\camera.h
+..\obj\main.o: ..\FAFTS\src\ff.h
+..\obj\main.o: ..\FAFTS\src\integer.h
+..\obj\main.o: ..\FAFTS\src\ffconf.h
+..\obj\main.o: ..\FAFTS\exfuns\exfuns.h

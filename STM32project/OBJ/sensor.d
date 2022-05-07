@@ -36,3 +36,4 @@
 ..\obj\sensor.o: ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h
 ..\obj\sensor.o: ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h
 ..\obj\sensor.o: ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h
+..\obj\sensor.o: ..\SYSTEM\delay\delay.h

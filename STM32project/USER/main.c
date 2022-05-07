@@ -18,7 +18,11 @@
 #include "serve.h"
 #include "protocol.h"
 #include "beep.h"
-
+#include "pwm.h"
+#include "sensor.h"
+#include "camera.h"
+#include "ff.h"
+#include "exfuns.h"
 
 //任务优先级
 #define START_TASK_PRIO			1
@@ -75,6 +79,11 @@ const char devPubTopic[] = "/gvrxJiLWkq4/Stm32Internet/user/update";	//发布主题
 unsigned short timeCount = 0;	//发送间隔变量
 unsigned short timeCount_date = 0;	//发送间隔变量
 unsigned char *dataPtr = NULL;  //esp8266正常运作检查指针
+//定义全局变量
+KFP FilterX_Parameter, FilterY_Parameter; //两个卡尔曼滤波参数结构体FilterX_Parameter与FilterY_Parameter
+extern int coords[2];	//存放原始坐标的数组
+int AfterFliter[2];		//卡尔曼滤波后物体坐标x与y
+FRESULT result;
 
 extern char PUB_BUF1[256];
 int main(void)
@@ -87,7 +96,13 @@ int main(void)
 	TP_Init();				//初始化触摸屏
 	LED_Init();   			//LED初始化
 	DS18B20_Init();			//温度传感器初始化
+	AllMoter_init();		//所有电机初始化
+	AllSensor_init();       //所有传感器初始化
 	FSMC_SRAM_Init(); 		//SRAM初始化	
+	KFP_init(0.02,0,0,0,0.001,0.543,&FilterX_Parameter);
+	KFP_init(0.02,0,0,0,0.001,0.543,&FilterY_Parameter);
+	exfuns_init();			//为fatfs文件系统分配内存
+	result = f_mount(fs[0],"0:",1);	//挂载SD卡
 	mem_init(SRAMIN); 		//内部RAM初始化
 	mem_init(SRAMEX); 		//外部RAM初始化
 	mem_init(SRAMCCM);		//CCM初始化

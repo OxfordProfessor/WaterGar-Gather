@@ -17,7 +17,6 @@
 /*数据对象句柄*/
 GRAPH_DATA_Handle Graphdata;
 GRAPH_DATA_Handle Graphdata2;
-int t = 0;
 short temperature;
 extern short DS18B20_Get_Temp();
 

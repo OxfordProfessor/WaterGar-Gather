@@ -12,7 +12,7 @@ void ConfigureTimeForRunTimeStats(void)
 	//定时器3初始化，定时器时钟为84M，分频系数为84-1，所以定时器3的频率
 	//为84M/84=1M，自动重装载为50-1，那么定时器周期就是50us
 	FreeRTOSRunTimeTicks=0;
-	TIM3_Int_Init(50-1,84-1);	//初始化TIM3
+	TIM6_Int_Init(50-1,84-1);	//初始化TIM3
 }
 
 //通用定时器3中断初始化
@@ -21,7 +21,7 @@ void ConfigureTimeForRunTimeStats(void)
 //定时器溢出时间计算方法:Tout=((arr+1)*(psc+1))/Ft us.
 //Ft=定时器工作频率,单位:Mhz
 //这里使用的是定时器3!
-void TIM3_Int_Init(u16 arr,u16 psc)
+void TIM6_Int_Init(u16 arr,u16 psc)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
@@ -46,12 +46,12 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 }
 
 //定时器3中断服务函数
-void TIM3_IRQHandler(void)
+void TIM6_IRQHandler(void)
 {
-	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
+	if(TIM_GetITStatus(TIM6,TIM_IT_Update)==SET) //溢出中断
 	{
 		FreeRTOSRunTimeTicks++;
 	}
-	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
+	TIM_ClearITPendingBit(TIM6,TIM_IT_Update);  //清除中断标志位
 }
 

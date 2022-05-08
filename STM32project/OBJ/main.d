@@ -56,6 +56,7 @@
 ..\obj\main.o: ..\FreeRTOS\include\deprecated_definitions.h
 ..\obj\main.o: ..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h
 ..\obj\main.o: ..\FreeRTOS\include\mpu_wrappers.h
+..\obj\main.o: ..\FreeRTOS\include\queue.h
 ..\obj\main.o: ..\HARDWARE\DS18B20\ds18b20.h
 ..\obj\main.o: ..\FreeRTOS\include\task.h
 ..\obj\main.o: ..\FreeRTOS\include\list.h
@@ -101,3 +102,5 @@
 ..\obj\main.o: ..\FAFTS\src\integer.h
 ..\obj\main.o: ..\FAFTS\src\ffconf.h
 ..\obj\main.o: ..\FAFTS\exfuns\exfuns.h
+..\obj\main.o: D:\MDK5\ARM\ARMCC\Bin\..\include\string.h
+..\obj\main.o: ..\NET\cJSON\cJSON.h

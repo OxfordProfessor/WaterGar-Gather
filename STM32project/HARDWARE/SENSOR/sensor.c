@@ -225,6 +225,18 @@ void AllSensor_init()
 	ADC_init();
 	HCSR04_init();
 }
+float current_tds()
+{
+	float tds;
+	tds = AD_Value[0];
+	return tds;
+}
+int current_ph()
+{
+	float ph;
+	ph = AD_Value[1];
+	return ph;
+}
 int margin_storage_percent()
 {
 	int storage;

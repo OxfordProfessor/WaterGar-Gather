@@ -1,5 +1,5 @@
 Dependencies for Project 'FreeRTOS', Target 'FreeRTOS': (DO NOT MODIFY !)
-F (.\main.c)(0x62763E80)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\USER -I ..\HARDWARE\IIC -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\HARDWARE\SRAM -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\MALLOC -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FWLIB\CMSIS\Include -I ..\EMWIN\STemWin\Config -I ..\EMWIN\STemWin\inc -I ..\EMWIN\Demo -I ..\HARDWARE\GUI -I ..\HARDWARE\DS18B20 -I ..\NET\cJSON -I ..\NET\ESP8266 -I ..\NET\Protocol -I ..\NET\Serve -I ..\NET -I ..\HARDWARE\BEEP -I ..\HARDWARE\SENSOR -I ..\HARDWARE\PWM -I ..\FAFTS\sd -I ..\FAFTS\src\option -I ..\FAFTS\exfuns -I ..\FAFTS\src -I ..\HARDWARE\SPI -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\W25QXX -I ..\HARDWARE\CAMERA-I.\RTE\_FreeRTOS-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK5\ARM\CMSIS\Include-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__FPU_USED="1" -DARM_MATH_CM4 -D__CC_ARM --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
+F (.\main.c)(0x627741C2)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\USER -I ..\HARDWARE\IIC -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\HARDWARE\SRAM -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\MALLOC -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FWLIB\CMSIS\Include -I ..\EMWIN\STemWin\Config -I ..\EMWIN\STemWin\inc -I ..\EMWIN\Demo -I ..\HARDWARE\GUI -I ..\HARDWARE\DS18B20 -I ..\NET\cJSON -I ..\NET\ESP8266 -I ..\NET\Protocol -I ..\NET\Serve -I ..\NET -I ..\HARDWARE\BEEP -I ..\HARDWARE\SENSOR -I ..\HARDWARE\PWM -I ..\FAFTS\sd -I ..\FAFTS\src\option -I ..\FAFTS\exfuns -I ..\FAFTS\src -I ..\HARDWARE\SPI -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\W25QXX -I ..\HARDWARE\CAMERA-I.\RTE\_FreeRTOS-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK5\ARM\CMSIS\Include-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__FPU_USED="1" -DARM_MATH_CM4 -D__CC_ARM --C99-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x544DC60B)
 I (..\CORE\core_cm4.h)(0x527B7158)
@@ -56,6 +56,7 @@ I (..\FreeRTOS\include\portable.h)(0x573F3A16)
 I (..\FreeRTOS\include\deprecated_definitions.h)(0x573F3A16)
 I (..\FreeRTOS\portable\RVDS\ARM_CM4F\portmacro.h)(0x573F3A17)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x573F3A16)
+I (..\FreeRTOS\include\queue.h)(0x573F3A16)
 I (..\HARDWARE\DS18B20\ds18b20.h)(0x6219DBEE)
 I (..\FreeRTOS\include\task.h)(0x573F3A16)
 I (..\FreeRTOS\include\list.h)(0x573F3A16)
@@ -94,12 +95,14 @@ I (..\NET\Protocol\protocol.h)(0x620CA0E6)
 I (..\NET\common.h)(0x620CA0E6)
 I (..\HARDWARE\BEEP\beep.h)(0x620CB60D)
 I (..\HARDWARE\PWM\pwm.h)(0x6274FF61)
-I (..\HARDWARE\SENSOR\sensor.h)(0x6275D430)
+I (..\HARDWARE\SENSOR\sensor.h)(0x62771139)
 I (..\HARDWARE\CAMERA\camera.h)(0x62764252)
 I (..\FAFTS\src\ff.h)(0x5710F3B3)
 I (..\FAFTS\src\integer.h)(0x5710F3B4)
 I (..\FAFTS\src\ffconf.h)(0x5710F3B4)
 I (..\FAFTS\exfuns\exfuns.h)(0x5710F3B3)
+I (D:\MDK5\ARM\ARMCC\include\string.h)(0x57F606B8)
+I (..\NET\cJSON\cJSON.h)(0x620CB411)
 F (.\stm32f4xx_it.c)(0x58C77958)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\USER -I ..\HARDWARE\IIC -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\HARDWARE\SRAM -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\MALLOC -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FWLIB\CMSIS\Include -I ..\EMWIN\STemWin\Config -I ..\EMWIN\STemWin\inc -I ..\EMWIN\Demo -I ..\HARDWARE\GUI -I ..\HARDWARE\DS18B20 -I ..\NET\cJSON -I ..\NET\ESP8266 -I ..\NET\Protocol -I ..\NET\Serve -I ..\NET -I ..\HARDWARE\BEEP -I ..\HARDWARE\SENSOR -I ..\HARDWARE\PWM -I ..\FAFTS\sd -I ..\FAFTS\src\option -I ..\FAFTS\exfuns -I ..\FAFTS\src -I ..\HARDWARE\SPI -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\W25QXX -I ..\HARDWARE\CAMERA-I.\RTE\_FreeRTOS-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK5\ARM\CMSIS\Include-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__FPU_USED="1" -DARM_MATH_CM4 -D__CC_ARM --C99-o ..\obj\stm32f4xx_it.o --omf_browse ..\obj\stm32f4xx_it.crf --depend ..\obj\stm32f4xx_it.d)
 I (stm32f4xx_it.h)(0x5447C0B7)
 I (stm32f4xx.h)(0x544DC60B)
@@ -400,8 +403,8 @@ I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h)(0x53DBAFAD)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h)(0x53DBAFAD)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h)(0x53DBAFAD)
 I (..\FWLIB\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h)(0x53DBAFAD)
-F (..\HARDWARE\SENSOR\sensor.c)(0x62762130)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\USER -I ..\HARDWARE\IIC -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\HARDWARE\SRAM -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\MALLOC -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FWLIB\CMSIS\Include -I ..\EMWIN\STemWin\Config -I ..\EMWIN\STemWin\inc -I ..\EMWIN\Demo -I ..\HARDWARE\GUI -I ..\HARDWARE\DS18B20 -I ..\NET\cJSON -I ..\NET\ESP8266 -I ..\NET\Protocol -I ..\NET\Serve -I ..\NET -I ..\HARDWARE\BEEP -I ..\HARDWARE\SENSOR -I ..\HARDWARE\PWM -I ..\FAFTS\sd -I ..\FAFTS\src\option -I ..\FAFTS\exfuns -I ..\FAFTS\src -I ..\HARDWARE\SPI -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\W25QXX -I ..\HARDWARE\CAMERA-I.\RTE\_FreeRTOS-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK5\ARM\CMSIS\Include-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__FPU_USED="1" -DARM_MATH_CM4 -D__CC_ARM --C99-o ..\obj\sensor.o --omf_browse ..\obj\sensor.crf --depend ..\obj\sensor.d)
-I (..\HARDWARE\SENSOR\sensor.h)(0x6275D430)
+F (..\HARDWARE\SENSOR\sensor.c)(0x62771157)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\FWLIB\STM32F4xx_StdPeriph_Driver\inc -I ..\USER -I ..\HARDWARE\IIC -I ..\HARDWARE\LCD -I ..\HARDWARE\LED -I ..\HARDWARE\SRAM -I ..\HARDWARE\TIMER -I ..\HARDWARE\24CXX -I ..\HARDWARE\TOUCH -I ..\MALLOC -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\FWLIB\CMSIS\Include -I ..\EMWIN\STemWin\Config -I ..\EMWIN\STemWin\inc -I ..\EMWIN\Demo -I ..\HARDWARE\GUI -I ..\HARDWARE\DS18B20 -I ..\NET\cJSON -I ..\NET\ESP8266 -I ..\NET\Protocol -I ..\NET\Serve -I ..\NET -I ..\HARDWARE\BEEP -I ..\HARDWARE\SENSOR -I ..\HARDWARE\PWM -I ..\FAFTS\sd -I ..\FAFTS\src\option -I ..\FAFTS\exfuns -I ..\FAFTS\src -I ..\HARDWARE\SPI -I ..\HARDWARE\STMFLASH -I ..\HARDWARE\W25QXX -I ..\HARDWARE\CAMERA-I.\RTE\_FreeRTOS-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\MDK5\ARM\CMSIS\Include-ID:\MDK5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Device\Include-D__UVISION_VERSION="523" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__FPU_USED="1" -DARM_MATH_CM4 -D__CC_ARM --C99-o ..\obj\sensor.o --omf_browse ..\obj\sensor.crf --depend ..\obj\sensor.d)
+I (..\HARDWARE\SENSOR\sensor.h)(0x62771139)
 I (..\SYSTEM\sys\sys.h)(0x5836D870)
 I (..\USER\stm32f4xx.h)(0x544DC60B)
 I (..\CORE\core_cm4.h)(0x527B7158)

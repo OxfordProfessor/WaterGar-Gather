@@ -185,8 +185,8 @@ void start_task(void *pvParameters)
 	GUI_Init();  					//STemWin初始化
 	WM_MULTIBUF_Enable(1);  		//开启STemWin多缓冲,RGB屏可能会用到
     taskENTER_CRITICAL();           //进入临界区
-	//创建信息
-	Msg_Queue=xQueueCreate(MSG_Q_NUM,sizeof(int));        //创建消息Key_Queue
+	//创建队列
+	Msg_Queue=xQueueCreate(MSG_Q_NUM,sizeof(int));        //创建队列Msg_Queue
 	//创建触摸任务
     xTaskCreate((TaskFunction_t )touch_task,             
                 (const char*    )"touch_task",           
@@ -236,12 +236,13 @@ void start_task(void *pvParameters)
                 (void*          )NULL,                  
                 (UBaseType_t    )BACK_TASK_PRIO,        
                 (TaskHandle_t*  )& Back_Handler); 
-	Back_speed_set(200);			//启动后置石油吸附电机
-	converyor_speed_set(200);		//启动传送带
-	Collect_speed_set(200);			//启动前向滚轮收集
-	vTaskSuspend(Back_Handler); 	//返回岸边任务，非必要不启动
-    vTaskDelete(StartTask_Handler); //删除开始任务
-    taskEXIT_CRITICAL();            //退出临界区
+	Back_speed_set(200);				//启动后置石油吸附电机
+	converyor_speed_set(200);			//启动传送带
+	Collect_speed_set(200);				//启动前向滚轮收集
+	vTaskSuspend(Back_Handler); 		//返回岸边任务，非必要不启动
+	vTaskSuspend(CollectTask_Handler);  //暂停收集任务（主任务），中控台启动时才开始执行，否则不启动
+    vTaskDelete(StartTask_Handler); 	//删除开始任务
+    taskEXIT_CRITICAL();            	//退出临界区
 }
 
 //EMWINDEMO任务

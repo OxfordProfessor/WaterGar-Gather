@@ -41,6 +41,18 @@ var mqtt = require('aliyun-mqtt/mqtt.min.js') //根据自己存放的路径修�
 const crypto = require('aliyun-mqtt/hex_hmac_sha1.js'); //根据自己存放的路径修改
 import global_ from 'Global/Global'
 
+var that = this
+const options = {
+  keepalive: 60, //60s
+  clean: true, //cleanSession不保持持久会话
+  protocolVersion: 4 //MQTT v3.1.1
+}
+//接收消息监听，解析数值
+options.password = `d4b200a3ff1c93814d137d3a9cbe44cfb7ce8ce3`;
+options.clientId = `FESA234FBDS24|securemode=3,signmethod=hmacsha1,timestamp=789|`;
+options.username = `SVCC&gvrxVSKqKlH`;
+const client = mqtt.connect('wxs://gvrxVSKqKlH.iot-as-mqtt.cn-shanghai.aliyuncs.com',options)
+
 export default {
   props: {
       // 操纵杆外圈半径
@@ -60,9 +72,11 @@ export default {
       voltage: 0,
       //direction: 0,              //虚拟摇杆方位角，1表示第一象限，2表示第二象限，3表示第三象限，4表示第四象限，0位于居中位置
       Comeback: 0,               //返回岸边标志位，1表示返回岸边
-
+      ph: 0,
+      tds: 0,
       angle: 0, // 旋转角度
       direction: '', // 旋转方向
+      directionvalue: 0,
       innerLeft: this.outerRadius - this.innerRadius, // 操纵杆内圈的原始left值
       innerTop: this.outerRadius - this.innerRadius, // 操纵杆内圈的原始top值
       isMoving: false, // 是否正在移动
@@ -80,6 +94,11 @@ export default {
       var that = this
       global_.Comeback = 1
       console.log('更改数值');
+      client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"Comeback":1},"method":"thing.event.property.post"}',function(err){
+        if(!err){
+          console.log("方向命令上发")
+        } 
+      })
     },
     onBanScroll: function(e) {
       return;
@@ -89,7 +108,8 @@ export default {
         let that = this;
         that.timer = setInterval(function() {
           that.$emit("joystickTouchStart", that.direction);
-        }, 500);  // 如果时间想要自定义再自己改改好了
+        }, 500);  
+        // 如果时间想要自定义再自己改改好了
       },
       // 摇杆移动事件
       onJoystickMove: function(e) {
@@ -152,6 +172,63 @@ export default {
               angle
             });  // 触发外部事件并返回返回方向和角度
             console.log(this.direction)
+            if(this.direction == '上'){this.directionvalue = 0,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":0},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '左上'){this.directionvalue = 1,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":1},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '左'){this.directionvalue = 2,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":2},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '左下'){this.directionvalue = 3,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":3},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '下'){this.directionvalue = 4,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":4},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '右下'){this.directionvalue = 5,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":5},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '右'){this.directionvalue = 6,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":6},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            if(this.direction == '左上'){this.directionvalue = 7,
+              client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"directionvalue":7},"method":"thing.event.property.post"}',function(err){
+                if(!err){
+                  console.log("方向命令上发")
+                } 
+              })
+            }
+            console.log(this.directionvalue)
           }
         }
       },
@@ -168,16 +245,41 @@ export default {
         clearInterval(this.timer);
       }
   },
-
-  created () {
-    
+  created:function(){
+    client.on('connect', function () {
+      console.log('连接服务器成功')
+      //注意：订阅主题，替换productKey和deviceName(这里的主题可能会不一样，具体请查看控制台-产品详情-Topic 类列表下的可订阅主题)，并且确保改主题的权限设置为可订阅
+      client.subscribe('/gvrxVSKqKlH/SVCC/user/get', function (err) {
+        if (!err) {
+           console.log('订阅成功！');
+        }
+      })
+    })
+    client.on('message', function (topic, message) {    //解析消息命令，原始消息格式{"storage":8}解析为{storage: 8}
+      // message is Buffer
+      let dataFromDev = {}
+      let msg = message.toString();
+      console.log('收到消息：'+msg);
+     //关闭连接 client.end()
+      dataFromDev = JSON.parse(message)
+      console.log(dataFromDev)
+      global_.ph = dataFromDev.ph      //ph值更新
+      global_.tds = dataFromDev.tds    //tds值更新
+      that.ph = global_.ph
+      that.tds = global_.tds
+      that.storage = dataFromDev.storage 
+      that.voltage = dataFromDev.voltage
+      global_.storage = that.storage 
+      global_.voltage = that.voltage
+      that.Comeback = global_.Comeback    //获得全局变量，更改Comeback的值
+      that.storage = global_.storage    //获得全局变量，更改Comeback的值
+    })
   },
   onLoad: function(options){    //接收页面传参
     var that = this
     that.storage = global_.storage
     that.voltage = global_.voltage
   },
-    
 }
 
 </script>

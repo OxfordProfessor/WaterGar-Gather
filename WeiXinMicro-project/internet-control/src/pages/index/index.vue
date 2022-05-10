@@ -210,63 +210,19 @@ export default {
 	  }
 	  chart.setOption(option,true)   //这里的true一定要有，不然的话会导致你的图表不根据数据的变化进行更新
 	  return chart
-	}
+	},
+  },
+  mounted(){
+    
   },
   components: {
     mpvueEcharts,
   },
-  onShow(){
-
-  },
-  created:function(){
+  onLoad: function(options){    //接收页面传参
     var that = this
-    const options = {
-      keepalive: 60, //60s
-      clean: true, //cleanSession不保持持久会话
-      protocolVersion: 4 //MQTT v3.1.1
-    }
-	  //接收消息监听，解析数值
-    options.password = `d4b200a3ff1c93814d137d3a9cbe44cfb7ce8ce3`;
-    options.clientId = `FESA234FBDS24|securemode=3,signmethod=hmacsha1,timestamp=789|`;
-    options.username = `SVCC&gvrxVSKqKlH`;
-    const client = mqtt.connect('wxs://gvrxVSKqKlH.iot-as-mqtt.cn-shanghai.aliyuncs.com',options)
-    client.on('connect', function () {
-      console.log('连接服务器成功')
-      //注意：订阅主题，替换productKey和deviceName(这里的主题可能会不一样，具体请查看控制台-产品详情-Topic 类列表下的可订阅主题)，并且确保改主题的权限设置为可订阅
-      client.subscribe('/gvrxVSKqKlH/SVCC/user/get', function (err) {
-        if (!err) {
-           console.log('订阅成功！');
-        }
-      })
-    })
-    client.on('message', function (topic, message) {    //解析消息命令，原始消息格式{"storage":8}解析为{storage: 8}
-      // message is Buffer
-      let dataFromDev = {}
-      let msg = message.toString();
-      console.log('收到消息：'+msg);
-     //关闭连接 client.end()
-      dataFromDev = JSON.parse(message)
-      console.log(dataFromDev)
-      global_.ph = dataFromDev.ph      //ph值更新
-      global_.tds = dataFromDev.tds    //tds值更新
-      that.ph = global_.ph
-      that.tds = global_.tds
-      that.storage = dataFromDev.storage 
-      that.voltage = dataFromDev.voltage
-      global_.storage = that.storage 
-      global_.voltage = that.voltage
-      that.Comeback = global_.Comeback    //获得全局变量，更改Comeback的值
-      that.storage = global_.storage    //获得全局变量，更改Comeback的值
-      if(that.Comeback == 1){     // 如果Comeback的值为1，才发送返回消息
-        client.publish('/sys/gvrxVSKqKlH/SVCC/thing/event/property/post','{"params":{"Comeback":1},"method":"thing.event.property.post"}',function(err){
-          if(!err){
-            console.log("成功下发命令——返回")
-            that.Comeback = 0
-          }
-        })
-      }
-    })
-  }
+    that.ph = global_.ph
+    that.tds = global_.tds
+  },
 } 
 </script>
 

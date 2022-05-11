@@ -25,7 +25,10 @@
             <img class="data-logo" src="/static/images/TDS.png"/>
             <view class="data-text">
               <view class="data-title">TDS值</view>
-              <view class="data-value">{{tds}}mg/L</view>
+              <view class ="data-value-unit">
+                <view class="data-value">{{tds}}</view>
+                <view class="data-unit">mg/L</view>
+              </view>
             </view>
           </view>
         </view>
@@ -62,10 +65,12 @@ import global_ from 'Global/Global'
 //import mpvueEcharts from 'mpvue-echarts'
 //import * as echarts from 'chart/echarts.js'
 
-
 export default {
   data(){
     return{
+      waterinfo:{},
+      ischange:'',
+      timer: null, // 定时器
       ph: 0,
       tds: 0,
       voltage: 0,
@@ -212,16 +217,22 @@ export default {
 	  return chart
 	},
   },
+  
   mounted(){
     
   },
   components: {
     mpvueEcharts,
   },
+  onShow(){
+    let that = this
+    this.timer = setInterval(function() {
+      that.ph = global_.ph
+      that.tds = global_.tds
+	  }, 3000)
+  },
   onLoad: function(options){    //接收页面传参
-    var that = this
-    that.ph = global_.ph
-    that.tds = global_.tds
+
   },
 } 
 </script>
@@ -287,15 +298,22 @@ export default {
       padding: 0 8px;
       box-shadow: #d6d6d6 0px 0px 5px;
       .data-logo{
-        height: 48px;
-        width: 48px;
-        margin-top: 20px;
+        height: 60px;
+        width: 60px;
+        margin-top: 15px;
       }
       .data-text{
         margin-top: 15px;
         color: #7f7f7f;
-        .data-value{
-          font-size: 20px;
+        .data-value-unit{
+          display: flex;
+          justify-content: space-between;
+          .data-value{
+            font-size: 26px;
+          }
+          .data-unit{
+            font-size: 15px;
+          }
         }
       }
     }

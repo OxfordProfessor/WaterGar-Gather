@@ -255,6 +255,9 @@ export default {
         }
       })
     })
+  },
+  onShow(){
+    var that = this
     client.on('message', function (topic, message) {    //解析消息命令，原始消息格式{"storage":8}解析为{storage: 8}
       // message is Buffer
       let dataFromDev = {}
@@ -265,20 +268,12 @@ export default {
       console.log(dataFromDev)
       global_.ph = dataFromDev.ph      //ph值更新
       global_.tds = dataFromDev.tds    //tds值更新
-      that.ph = global_.ph
-      that.tds = global_.tds
       that.storage = dataFromDev.storage 
       that.voltage = dataFromDev.voltage
-      global_.storage = that.storage 
-      global_.voltage = that.voltage
-      that.Comeback = global_.Comeback    //获得全局变量，更改Comeback的值
-      that.storage = global_.storage    //获得全局变量，更改Comeback的值
     })
   },
   onLoad: function(options){    //接收页面传参
-    var that = this
-    that.storage = global_.storage
-    that.voltage = global_.voltage
+
   },
 }
 
